@@ -1,0 +1,31 @@
+@import "tailwindcss";
+/* ...existing code... */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme variables (utilisées par les classes ci-dessus) */
+:root {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted: #f3f4f6;
+  --color-muted-foreground: #6b7280;
+  --color-accent: #f8fafc;
+  --color-border: #e5e7eb;
+  --color-primary: #0ea5a4; /* teal-ish */
+  --color-primary-foreground: #ffffff;
+}
+
+/* Map variables to utility-friendly names */
+.bg-background { background-color: var(--color-background) }
+.text-foreground { color: var(--color-foreground) }
+.text-muted-foreground { color: var(--color-muted-foreground) }
+.bg-muted { background-color: var(--color-muted) }
+.bg-accent { background-color: var(--color-accent) }
+.border-border { border-color: var(--color-border) }
+.text-primary { color: var(--color-primary) }
+.bg-primary { background-color: var(--color-primary) }
+.text-primary-foreground { color: var(--color-primary-foreground) }
+
+/* small accessibility + balance helper */
+.text-balance { text-wrap: balance; }
