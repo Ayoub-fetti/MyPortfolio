@@ -221,7 +221,7 @@
             Si vous souhaitez discuter d'un projet ou simplement dire bonjour, je suis toujours disponible pour échanger.
           </p>
           <a
-            href="mailto:votre.email@example.com"
+            href="mailto:ayoubfetti.dev@gmail.com"
             class="inline-block px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors"
           >
             Me contacter
@@ -284,7 +284,7 @@ const projects = ref([
     id: 1,
     title: 'AtlasVolunteers',
     description: 'AtlasVolunteers est une application web conçue pour faciliter la connexion entre bénévoles et organisations. Son objectif est de simplifier la recherche, la gestion et la participation aux actions de service communautaire, tout en favorisant l`engagement citoyen et l`impact social.',
-    image: '../public/images/atlas.png',
+    image: '/images/atlas.png',
     technologies: ['Laravel','Blade', 'Tailwind', 'UML'],
     github: 'https://github.com/Ayoub-fetti/AtlasVolunteer.git',
     demo: '#'
@@ -293,7 +293,7 @@ const projects = ref([
     id: 2,
     title: 'Snapshop',
     description: 'SnapShop est une application e-commerce moderne développée avec Vue.js pour le front-end, Tailwind CSS pour le design réactif et élégant, et Firebase pour la gestion de l’authentification, de la base de données et de l’hébergement.',
-    image: '../public/images/snap.png',
+    image: '/images/snap.png',
     technologies: ['Vue.js', 'Tailwind', 'Firebase'],
     github: 'https://github.com/Ayoub-fetti/SnapShop',
     demo: 'https://shopysnap.netlify.app/'
@@ -302,7 +302,7 @@ const projects = ref([
     id: 3,
     title: 'QuizCraft',
     description: 'QuizCraft est une application légère et pédagogique permettant de créer, jouer et gérer des quiz directement dans le navigateur. Développée avec HTML, CSS (design responsive) et JavaScript (logique et persistance locale), l’application vise à offrir une expérience simple pour enseignants, étudiants ou développeurs qui veulent s’exercer ou partager des questionnaires interactifs.',
-    image: '../public/images/quiz2.png',
+    image: '/images/quiz2.png',
     technologies: ['CSS', 'Javascript', 'JSON'],
     github: 'https://github.com/Ayoub-fetti/JSQuizStarter',
     demo: 'https://ayoub-fetti.github.io/JSQuizStarter/'
@@ -317,7 +317,7 @@ const experiences = ref([
     company: 'VMS',
     period: '3 mois',
     description: "Développement et maintenance de composants critiques utilisés dans l'ensemble du produit. Collaboration étroite avec des équipes interfonctionnelles pour implémenter les meilleures pratiques en matière d'accessibilité web et de performance.",
-    image: '../public/images/vms.png',
+    image: '/images/vms.png',
     technologies: ['Vue.js', 'Laravel', 'PostgreSQL', 'Docker']
   }
 ])
@@ -389,7 +389,7 @@ const education = ref([
     school: 'YouCode , Fondation OCP / UM6P | Nador',
     year: '2024-2026',
     description: 'Spécialisation en développement web et ingénierie logicielle. Projet de fin d\'études sur les applications web progressives.',
-    image: '../public/images/youcode.png'
+    image: '/images/youcode.png'
   },
   {
     id: 2,
@@ -397,7 +397,7 @@ const education = ref([
     school: 'Faculté des sciences juridiques, économiques et sociales | Meknès',
     year: '2023',
     description: 'Formation générale en informatique et gestion des entreprises',
-    image: '../public/images/umi.png'
+    image: '/images/umi.png'
   }
 ])
 
