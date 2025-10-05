@@ -55,7 +55,6 @@
         </div>
       </transition>
     </nav>
-
     <main class="pt-20">
       <section class="pt-12 pb-20 px-6">
         <div class="max-w-4xl mx-auto">
@@ -82,10 +81,10 @@
                       <h4 class="text-sm font-semibold text-white">{{ project.title }}</h4>
                       <div class="flex gap-2">
                         <a v-if="project.github" :href="project.github" target="_blank" rel="noopener noreferrer" class="text-white bg-primary/90 p-2 rounded-md hover:scale-105 transition">
-                          <i class="fa-brands fa-github"></i>
+                          <i class="fa-brands fa-github text-2xl"></i>
                         </a>
                         <a v-if="project.demo" :href="project.demo" target="_blank" rel="noopener noreferrer" class="text-white bg-accent p-2 rounded-md hover:scale-105 transition">
-                          <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                          <i class="fa-solid fa-arrow-up-right-from-square text-black"></i>
                         </a>
                       </div>
                     </div>
@@ -96,7 +95,7 @@
               <div class="p-4">
                 <p class="text-sm text-muted-foreground mb-3 leading-relaxed">{{ project.description }}</p>
                 <div class="flex flex-wrap gap-2 mb-3">
-                  <span v-for="tech in project.technologies" :key="tech" class="text-xs px-2 py-1 bg-accent rounded text-muted-foreground">
+                  <span v-for="tech in project.technologies" :key="tech" class="text-xs px-2 py-1 bg-muted rounded text-muted-foreground ">
                     {{ tech }}
                   </span>
                 </div>
@@ -123,26 +122,72 @@
               :key="exp.id"
               class="border-l-2 border-border pl-6"
             >
-              <div class="flex items-start justify-between mb-2">
-                <div>
-                  <h3 class="font-medium">{{ exp.position }}</h3>
-                  <p class="text-muted-foreground">{{ exp.company }}</p>
+              <div class="flex items-start gap-4 mb-2">
+                <img
+                  :src="exp.image"
+                  :alt="exp.company"
+                  class="w-20 h-20 object-contain rounded-md bg-muted p-2 flex-shrink-0"
+                  loading="lazy"
+                />
+                <div class="flex-1">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <h3 class="font-medium">{{ exp.position }}</h3>
+                      <p class="text-muted-foreground">{{ exp.company }}</p>
+                    </div>
+                    <span class="text-sm text-muted-foreground whitespace-nowrap">
+                      {{ exp.period }}
+                    </span>
+                  </div>
+                  <p class="text-sm leading-relaxed text-muted-foreground mt-3">
+                    {{ exp.description }}
+                  </p>
+                  <div class="flex flex-wrap gap-2 mt-4">
+                    <span
+                      v-for="tech in exp.technologies"
+                      :key="tech"
+                      class="text-xs px-2 py-1 bg-muted rounded"
+                    >
+                      {{ tech }}
+                    </span>
+                  </div>
                 </div>
-                <span class="text-sm text-muted-foreground whitespace-nowrap">
-                  {{ exp.period }}
-                </span>
               </div>
-              <p class="text-sm leading-relaxed text-muted-foreground mt-3">
-                {{ exp.description }}
-              </p>
-              <div class="flex flex-wrap gap-2 mt-4">
-                <span
-                  v-for="tech in exp.technologies"
-                  :key="tech"
-                  class="text-xs px-2 py-1 bg-muted rounded"
-                >
-                  {{ tech }}
-                </span>
+            </div>
+          </div>
+        </div>
+      </section>
+         
+      <section id="formation" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-sm font-medium text-muted-foreground mb-12">Formation</h2>
+          <div class="space-y-8">
+            <div
+              v-for="edu in education"
+              :key="edu.id"
+              class="border-l-2 border-border pl-6"
+            >
+              <div class="flex items-start gap-4 mb-2">
+                <img
+                  :src="edu.image"
+                  :alt="edu.school"
+                  class="w-20 h-20 object-contain rounded-md bg-muted p-2 flex-shrink-0"
+                  loading="lazy"
+                />
+                <div class="flex-1">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <h3 class="font-medium">{{ edu.degree }}</h3>
+                      <p class="text-muted-foreground">{{ edu.school }}</p>
+                    </div>
+                    <span class="text-sm text-muted-foreground whitespace-nowrap">
+                      {{ edu.year }}
+                    </span>
+                  </div>
+                  <p class="text-sm leading-relaxed text-muted-foreground mt-3">
+                    {{ edu.description }}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -158,38 +203,13 @@
               <ul class="space-y-2">
                 <li
                   v-for="skill in category.items"
-                  :key="skill"
-                  class="text-sm text-muted-foreground"
+                  :key="skill.name"
+                  class="text-sm text-muted-foreground hover:bg-gray-100 flex items-center gap-2"
                 >
-                  {{ skill }}
+                  <i :class="skill.icon" class="text-primary"></i>
+                  {{ skill.name }}
                 </li>
               </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="formation" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-sm font-medium text-muted-foreground mb-12">Formation</h2>
-          <div class="space-y-8">
-            <div
-              v-for="edu in education"
-              :key="edu.id"
-              class="border-l-2 border-border pl-6"
-            >
-              <div class="flex items-start justify-between mb-2">
-                <div>
-                  <h3 class="font-medium">{{ edu.degree }}</h3>
-                  <p class="text-muted-foreground">{{ edu.school }}</p>
-                </div>
-                <span class="text-sm text-muted-foreground whitespace-nowrap">
-                  {{ edu.year }}
-                </span>
-              </div>
-              <p class="text-sm leading-relaxed text-muted-foreground mt-3">
-                {{ edu.description }}
-              </p>
             </div>
           </div>
         </div>
@@ -264,7 +284,7 @@ const projects = ref([
     id: 1,
     title: 'AtlasVolunteers',
     description: 'AtlasVolunteers est une application web conçue pour faciliter la connexion entre bénévoles et organisations. Son objectif est de simplifier la recherche, la gestion et la participation aux actions de service communautaire, tout en favorisant l`engagement citoyen et l`impact social.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '../public/images/atlas.png',
     technologies: ['Laravel','Blade', 'Tailwind', 'UML'],
     github: 'https://github.com/Ayoub-fetti/AtlasVolunteer.git',
     demo: '#'
@@ -273,7 +293,7 @@ const projects = ref([
     id: 2,
     title: 'Snapshop',
     description: 'SnapShop est une application e-commerce moderne développée avec Vue.js pour le front-end, Tailwind CSS pour le design réactif et élégant, et Firebase pour la gestion de l’authentification, de la base de données et de l’hébergement.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '../public/images/snap.png',
     technologies: ['Vue.js', 'Tailwind', 'Firebase'],
     github: 'https://github.com/Ayoub-fetti/SnapShop',
     demo: 'https://shopysnap.netlify.app/'
@@ -282,7 +302,7 @@ const projects = ref([
     id: 3,
     title: 'QuizCraft',
     description: 'QuizCraft est une application légère et pédagogique permettant de créer, jouer et gérer des quiz directement dans le navigateur. Développée avec HTML, CSS (design responsive) et JavaScript (logique et persistance locale), l’application vise à offrir une expérience simple pour enseignants, étudiants ou développeurs qui veulent s’exercer ou partager des questionnaires interactifs.',
-    image: '/placeholder.svg?height=300&width=400',
+    image: '../public/images/quiz2.png',
     technologies: ['CSS', 'Javascript', 'JSON'],
     github: 'https://github.com/Ayoub-fetti/JSQuizStarter',
     demo: 'https://ayoub-fetti.github.io/JSQuizStarter/'
@@ -297,6 +317,7 @@ const experiences = ref([
     company: 'VMS',
     period: '3 mois',
     description: "Développement et maintenance de composants critiques utilisés dans l'ensemble du produit. Collaboration étroite avec des équipes interfonctionnelles pour implémenter les meilleures pratiques en matière d'accessibilité web et de performance.",
+    image: '../public/images/vms.png',
     technologies: ['Vue.js', 'Laravel', 'PostgreSQL', 'Docker']
   }
 ])
@@ -305,27 +326,58 @@ const experiences = ref([
 const skills = ref([
   {
     category: 'Frontend',
-    items: ['Vue.js', 'React', 'Tailwind CSS', 'HTML5/CSS3']
+    items: [
+      { name: 'Vue.js', icon: 'fa-brands fa-vuejs' },
+      { name: 'React', icon: 'fa-brands fa-react' },
+      { name: 'Tailwind CSS', icon: 'fa-brands fa-css3-alt' },
+      { name: 'HTML5/CSS3', icon: 'fa-brands fa-html5' }
+    ]
   },
   {
     category: 'Backend',
-    items: ['Node.js', 'Express', 'Laravel', 'REST API', 'UML']
+    items: [
+      { name: 'Node.js', icon: 'fa-brands fa-node-js' },
+      { name: 'Express', icon: 'fa-solid fa-server' },
+      { name: 'Laravel', icon: 'fa-brands fa-laravel' },
+      { name: 'REST API', icon: 'fa-solid fa-code' },
+      { name: 'UML', icon: 'fa-solid fa-diagram-project' }
+    ]
   },
   {
     category: 'Base de données',
-    items: ['PostgreSQL', 'MongoDB', 'Mysql', 'Firebase']
+    items: [
+      { name: 'PostgreSQL', icon: 'fa-solid fa-database' },
+      { name: 'MongoDB', icon: 'fa-solid fa-database' },
+      { name: 'Mysql', icon: 'fa-solid fa-database' },
+      { name: 'Firebase', icon: 'fa-solid fa-fire' }
+    ]
   },
   {
     category: 'Outils',
-    items: ['Git', 'Docker', 'Vite', 'Postman', 'Swager']
+    items: [
+      { name: 'Git', icon: 'fa-brands fa-git-alt' },
+      { name: 'Docker', icon: 'fa-brands fa-docker' },
+      { name: 'Vite', icon: 'fa-solid fa-bolt' },
+      { name: 'Postman', icon: 'fa-brands fa-get-pocket' },
+      { name: 'Swager', icon: 'fa-solid fa-file-lines' }
+    ]
   },
   {
     category: 'Design',
-    items: ['Figma', 'Responsive Design', 'UI/UX']
+    items: [
+      { name: 'Figma', icon: 'fa-brands fa-figma' },
+      { name: 'Responsive Design', icon: 'fa-solid fa-mobile-screen-button' },
+      { name: 'UI/UX', icon: 'fa-solid fa-paint-brush' }
+    ]
   },
   {
     category: 'Autres',
-    items: ['Agile/Scrum', 'CI/CD', 'SEO', 'Accessibilité']
+    items: [
+      { name: 'Agile/Scrum', icon: 'fa-solid fa-people-roof' },
+      { name: 'CI/CD', icon: 'fa-solid fa-gear' },
+      { name: 'SEO', icon: 'fa-solid fa-chart-line' },
+      { name: 'Accessibilité', icon: 'fa-solid fa-universal-access' }
+    ]
   }
 ])
 
@@ -336,14 +388,16 @@ const education = ref([
     degree: 'Développement Full-Stack',
     school: 'YouCode , Fondation OCP / UM6P | Nador',
     year: '2024-2026',
-    description: 'Spécialisation en développement web et ingénierie logicielle. Projet de fin d\'études sur les applications web progressives.'
+    description: 'Spécialisation en développement web et ingénierie logicielle. Projet de fin d\'études sur les applications web progressives.',
+    image: '../public/images/youcode.png'
   },
   {
     id: 2,
     degree: 'Licence professionnelle en Gestion Informatisée des Organisations',
     school: 'Faculté des sciences juridiques, économiques et sociales | Meknès',
     year: '2023',
-    description: 'Formation générale en informatique et gestion des entreprises'
+    description: 'Formation générale en informatique et gestion des entreprises',
+    image: '../public/images/umi.png'
   }
 ])
 
